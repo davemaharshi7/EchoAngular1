@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container-fluid mt-5">
+  
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a routerLink="/products"  target="_blank" [queryParams]="{manufacturer : 'Samsung'}" class="list-group-item list-group-item-action">Samsung</a>
+        <a routerLink="/products"  target="_blank" [queryParams]="{manufacturer : 'Apple'}" class="list-group-item list-group-item-action">Apple</a>
+        <a routerLink="/products"  target="_blank" [queryParams]="{manufacturer : 'Xaiomi'}" class="list-group-item list-group-item-action">Xaiomi</a>
+        <a routerLink="/products"  target="_blank" [queryParams]="{manufacturer : 'Oppo'}" class="list-group-item list-group-item-action">OPPO</a>
+        <a routerLink="/products"  target="_blank" [queryParams]="{manufacturer : 'Microsoft'}" class="list-group-item list-group-item-action">Microsoft</a>
+      </div>
+    </div>
+  
+    <div class="col-md-9">
+      <h3>Our Products</h3>
+      <p>
+        <input (keyup)="filterQ(query.value)" #query
+        type="text" class="form-control" placeholder="Search...">
+      </p>
+      <div class="row">
+        <ng-container *ngFor="let p of filterd;let i = index">
+          <div class="col-sm-4">
+            <div class="card" style="width:250px; ">
+             <a routerLink="/products/{{p.id}}">
+              <img class="card-img-top" [src]="p.imageurl[0]" class="img-fluid img-responsive" 
+               alt="Card image cap">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title"><a routerLink="/products/{{p.id}}">{{ p.name }}</a></h5>
+                <p class="card-text">{{ p.price | currency:'INR':true }} </p>
+                    <span *ngIf="p.stock>0" class="badge badge-success">In Stock</span>
+                    <span *ngIf="p.stock==0" class="badge badge-danger">Out of Stock</span>
+                    <p>Storage:{{p.storage}} GB</p>
+                    <p>Manufacturer : {{p.manufacturer}}</p>
+                    <p>Camera : {{p.camera}}</p>
+                <!-- <a href="/products/{{p.id}}" -->
+                <!-- <button type="button" class="btn btn-success" data-id="{{p.id}}" data-toggle="modal" data-target="#exampleModalCenter{{p.id}}">View Product</button> -->
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(i+1)%3===0" class="w-100" >
+            <br>
+          </div>
+        </ng-container>
+        <div *ngIf="filterd.length == 0">
+          <p>Sorry, NO PRODUCTS FOUND!!</p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+  

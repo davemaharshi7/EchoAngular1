@@ -1,0 +1,41 @@
+
+<div class="container-fluid py-2">
+    <div class="container ">
+      <div class="row">
+        <!-- Left Side -->
+        <div class="col-sm-8">
+          <div class="container">
+            <!-- Main Image display -->
+            <div class="imgBox" >
+              <img [src]="p.imageurl[0]"  alt="main image"  class="img-thumbnail" style="max-height:500px" >
+            </div>
+            <!-- Small Thumbnails -->
+            <ul class="thumb">
+                <li><a href="{{p.imageurl[0]}}" target="imgBox"><img [src]="p.imageurl[0]" width="50px" height="50px" alt=""></a></li>
+                <li><a href="{{p.imageurl[1]}}" target="imgBox"><img [src]="p.imageurl[1]" width="50px" height="50px" alt=""></a></li>
+                <li><a href="{{p.imageurl[2]}}" target="imgBox"><img [src]="p.imageurl[2]" width="50px" height="50px" alt=""></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right Side -->
+        <div class="col-sm-4">
+            <div class="product-description">
+                <span class="name">{{ p.category }}</span>
+                <h1>{{ p.name }}</h1>
+                <span class="badge badge-info">New</span>
+                <span class="badge badge-success">OFFER</span>
+                <p class="pt-1">{{p.description}}</p>
+                <p class="pt-1">Manufacturer :{{p.manufacturer}}</p>
+                <p class="pt-1">Storage : {{p.storage}} GB</p>
+                <p class="pt-1">Camera :{{p.camera}}</p>
+
+              </div>
+              <!-- Product Pricing -->
+              <div class="product-price pb-1">
+                <span>{{p.price | currency:'INR'}}</span>
+              </div>
+              <button class="btn btn-success btn-lg" [class.disabled]="p.stock==0">Add to Cart</button>
+          </div>
+        </div>
+    </div>
+  </div>
