@@ -1,5 +1,9 @@
-# Binge
+# Mobile Store
 
+It has basic functionality like -
+1. Products Page where every product is visible.
+2. Search Function
+3. Filtering As per Manufacturer Name, Storage. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
 ## Development server
