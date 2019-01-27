@@ -13,18 +13,24 @@ export class ProductsComponent implements OnInit {
   public filterd:Products[];
 
   manufacturer:string;
+  storage:string;
   constructor(private productService:ProductServiceService,private ac:ActivatedRoute) { 
     this.productService.getProducts()
     .subscribe(p => this.filterd=this.prods=p);
 
     this.manufacturer = this.ac.snapshot.queryParamMap.get('manufacturer');
-  
+    this.storage = this.ac.snapshot.queryParamMap.get('storage');
   }
 
   ngOnInit() 
   { 
-    this.filterd = (this.manufacturer)?
-      this.prods.filter(f => f.manufacturer.toLowerCase().includes(this.manufacturer.toLowerCase())):this.prods;
+   this.filterd = (this.manufacturer)?
+       this.prods.filter(f => f.manufacturer.toLowerCase().includes(this.manufacturer.toLowerCase())) :this.prods;
+    if( this.storage)
+    {
+      this.filterd = this.prods.filter(f => f.storage.toString().includes(this.storage.toString()));
+      
+    }
   }
   // getProducts():void{
   //   this.productService.getProducts()
